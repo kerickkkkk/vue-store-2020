@@ -1,0 +1,10 @@
+// 根據 theming 必要載入 順序 並且將客製化提出
+// @import "../node_modules/bootstrap/scss/functions";
+// ~ = ../node_modules/
+@import "~bootstrap/scss/functions";
+@import "./helpers/variables";
+// @import "../node_modules/bootstrap/scss/mixins";
+@import "~bootstrap/scss/mixins";
+
+// 最後載入 BS 對應 node_modules 內的檔案
+@import "~bootstrap"; 
