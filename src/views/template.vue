@@ -19,7 +19,8 @@ export default {
 
   },
   methods: {
-
+    // toast
+    // this.$bus.$emit('toast:push', 123, 'success')
   }
 }
 </script>

@@ -39,6 +39,14 @@
               酷碰券
             </router-link>
           </li>
+          <li class="nav-item">
+            <router-link
+              to="/admin/storages"
+              class="nav-link"
+            >
+              儲存庫
+            </router-link>
+          </li>
           <li class="nav-item ml-auto">
             <router-link
               to="/"

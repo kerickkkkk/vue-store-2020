@@ -1,34 +1,38 @@
 <template>
   <div>
-    <div class="vld-parent">
-      <loading
+    <!-- <loading
         :active.sync="isLoading"
-      />
-
-      <router-view />
-    </div>
+      /> -->
+    <SweetToast />
+    <router-view />
   </div>
 </template>
 <script>
-/* global $ */
+// /* global $ */
+// /* global swal */
+import SweetToast from '@/components/SweetToast'
+
 export default {
+  components: {
+    SweetToast
+  },
   data () {
     return {
       isLoading: false
     }
   },
   mounted () {
-    this.getData()
-    console.log(123, $('#app').html())
+    // this.getData()
+
   },
   methods: {
-    getData () {
-      // console.log(process.env.APIPATH, process.env.UUID)
-      this.$http.get(`${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/products`)
-        .then(data =>
-          console.log(data)
-        )
-    }
+    // getData () {
+    //   // console.log(process.env.APIPATH, process.env.UUID)
+    //   this.$http.get(`${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/products`)
+    //     .then(data =>
+    //       console.log(data)
+    //     )
+    // }
   }
 }
 </script>

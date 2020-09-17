@@ -46,6 +46,13 @@
       <p class="mt-5 mb-3 text-muted">
         © 2018-2020
       </p>
+      <router-link
+        to="/"
+        class="nav-link"
+      >
+        <i class="fas fa-angle-left" />
+        返回首頁 <span class="sr-only">(current)</span>
+      </router-link>
     </form>
   </div>
 </template>

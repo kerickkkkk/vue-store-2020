@@ -21,20 +21,20 @@ const routes = [
     children: [
       {
         path: '',
-        component: () => import('../views/layout/Index.vue')
+        component: () => import('../views/frontEnd/Index.vue')
       },
       {
         // 內層不用 /
         path: 'about',
-        component: () => import('../views/layout/About.vue')
+        component: () => import('../views/frontEnd/About.vue')
       },
       {
         path: 'products',
-        component: () => import('../views/layout/Products.vue')
+        component: () => import('../views/frontEnd/Products.vue')
       },
       {
         path: 'cart',
-        component: () => import('../views/layout/Cart.vue')
+        component: () => import('../views/frontEnd/Cart.vue')
       }
     ]
   },
@@ -55,6 +55,11 @@ const routes = [
       {
         path: 'coupons',
         component: () => import('../views/dashboard/Coupons.vue'),
+        meta: { requiresAuth: true }
+      },
+      {
+        path: 'storages',
+        component: () => import('../views/dashboard/Storages.vue'),
         meta: { requiresAuth: true }
       }
     ]
