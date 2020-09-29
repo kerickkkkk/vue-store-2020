@@ -5,15 +5,14 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 const routes = [
-  // {
-  //   path: '/',
-  //   name: 'Home',
-  //   component: Home
-  // },
   // 如果有隨意輸入path全都回login
   {
     path: '*',
     redirect: '/'
+  },
+  {
+    path: '/test',
+    component: () => import('../views/Template.vue')
   },
   {
     path: '/',

@@ -59,7 +59,7 @@
             {{ coupon.percent }}
           </td>
           <td class="text-right">
-            {{ coupon.deadline.datetime }}
+            {{ couponzh_TW }}
           </td>
           <td :class="{'text-success': coupon.enabled}">
             {{ coupon.enabled ? '啟用' :'未啟用' }}
@@ -325,7 +325,6 @@ export default {
       this.fullScreenLoading = true
       this.$http.get(apiGetCoupons, { params: this.pageParam })
         .then(({ data }) => {
-          console.log(data, 'coupon')
           this.coupounLists = data.data
           this.pagination = data.meta.pagination
         }).catch(error => {

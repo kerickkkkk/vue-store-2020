@@ -1,5 +1,14 @@
 <template>
   <div class="home">
+    <button
+      class="btn btn-outline-primary rounded-circle goTop"
+      @click="goTop"
+    >
+      <i
+        class="fa fa-arrow-up"
+        aria-hidden="true"
+      />
+    </button>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <button
         class="navbar-toggler ml-auto"
@@ -56,29 +65,34 @@
         </ul>
       </div>
     </nav>
-    <!-- <div id="nav">
-      <router-link to="/">
-        Home
-      </router-link> |
-      <router-link to="/about">
-        About
-      </router-link> |
-      <router-link to="/products">
-        產品列表
-      </router-link> |
-      <router-link to="/cart">
-        購物車列表
-      </router-link> |
-      <router-link to="/login">
-        後台登入頁面
-      </router-link>
-    </div>
-    <router-view /> -->
+    <div style="height:1000px" />
+    <router-view />
   </div>
 </template>
 
 <script>
+/* global $ */
 export default {
+  data () {
+    return {
 
+    }
+  },
+  methods: {
+    goTop () {
+      $('html,body').animate({ scrollTop: 0 }, 'slow')
+    }
+  }
 }
 </script>
+
+<style lang="scss">
+.btn-outline-primary:hover{
+  color : #fff
+}
+.goTop{
+  position: fixed;
+  bottom: 10%;
+  right: 10%;
+}
+</style>

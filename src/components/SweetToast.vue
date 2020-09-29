@@ -8,7 +8,7 @@ export default {
   props: {
   },
   created () {
-    this.$bus.$on('toast:push', (title = '123', icon = 'success') => {
+    this.$bus.$on('toast:push', (title = '請給名稱', icon = 'success') => {
       this.callToast(title, icon)
     })
   },

@@ -5,6 +5,11 @@ import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/vue-loading.css'
 import VueSweetalert2 from 'vue-sweetalert2'
 import 'sweetalert2/dist/sweetalert2.min.css'
+import { ValidationObserver, ValidationProvider, configure, localize, extend } from 'vee-validate'
+// 匯入語系檔案
+import zhTW from 'vee-validate/dist/locale/zh_TW.json'
+import * as rules from 'vee-validate/dist/rules' // 規則檔案（ex: email...）
+
 // 載入 jqeury
 import $ from 'jquery'
 
@@ -16,6 +21,23 @@ import store from './store'
 import thousandsSeparator from '@/filters/thousands-separator.js'
 
 Vue.config.productionTip = false
+// vee - validate start
+Object.keys(rules).forEach((rule) => {
+  extend(rule, rules[rule])
+}) // 所有驗證規則
+
+configure({
+  classes: {
+    valid: 'is-valid',
+    invalid: 'is-invalid'
+  }
+})
+
+localize('tw', zhTW)
+// 加入至 元件
+Vue.component('validation-observer', ValidationObserver)
+Vue.component('validation-provider', ValidationProvider)
+// vee - validate end
 
 // // 元件全域註冊
 Vue.component('Loading', Loading)
@@ -49,7 +71,6 @@ router.beforeEach((to, a, next) => {
 
     // 檢查 checkToken 是否為空 空則導回首頁
     if (checkToken === '') {
-      alert('no right return to home page')
       next({
         path: '/'
       })
@@ -62,23 +83,19 @@ router.beforeEach((to, a, next) => {
     axios.defaults.headers.common.Authorization = `Bearer ${checkToken}`
     axios.post(apiCheck, { api_token: checkToken })
       .then(res => {
-        console.log('res', res.data.success)
         // api 失效就導向首頁
         if (!res.data.success) {
           next({
             path: '/login'
           })
         } else {
-          console.log('導到下一葉')
           next()
         }
       })
-      .catch(err => {
-        alert(err)
+      .catch(() => {
+
       })
   } else {
-    console.log('如果不用驗證島到下一葉 不需驗證')
-
     next() // 一開始測試要先用放行
   }
 })

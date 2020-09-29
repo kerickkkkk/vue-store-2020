@@ -4,6 +4,10 @@
       :active.sync="isLoading"
     />
     <h2>這是樣板</h2>
+    <input
+      v-model="isLoading"
+      type="checkbox"
+    >
   </div>
 </template>
 
@@ -16,11 +20,11 @@ export default {
     }
   },
   mounted () {
+    // toast
 
+    this.$bus.$emit('toast:push', 123, 'success')
   },
   methods: {
-    // toast
-    // this.$bus.$emit('toast:push', 123, 'success')
   }
 }
 </script>
